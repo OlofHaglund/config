@@ -1,4 +1,4 @@
-alias ssh-pwd='eval $(ssh-agent -t 10m) && ssh-add ~/.ssh/id_rsa'
+alias ssh-pwd='if [[ "$SSH_AGENT_PID" == "" ]]; then eval $(ssh-agent -t 10m); fi && ssh-add -l | grep -q $USER || ssh-add ~/.ssh/id_rsa'
 alias CHMOD='chmod --preserve-root'
 
 ssht() {
